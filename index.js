@@ -8,18 +8,21 @@ async.timesSeries(
   15,
   function(t, next) {
     var count = Math.pow(2, t);
-    var suite = new Benchmark.Suite(`${count} cycles`);
+    var suite = new Benchmark.Suite(`${count} size`);
 
-    var array = _.times(count, function(t) {
-      return t;
-    });
+    var object = {};
+    for (var i = 0; i < count; i++) {
+      object[i] = i;
+    }
 
-    suite.add('for', function() {
+    suite.add('Object.keys for', function() {
+      var array = Object.keys(object);
       for (var i = 0; i < count; i++) {
         array[i];
       };
     });
-    suite.add('while', function() {
+    suite.add('Object.keys while', function() {
+      var array = Object.keys(object);
       var i = 0;
       while (i < count) {
         i++;
@@ -27,22 +30,32 @@ async.timesSeries(
       }
     });
     suite.add('for-in', function() {
-      for (var i in array) {
-        array[i];
+      for (var i in object) {
+        object[i];
       }
     });
     suite.add('for-of', function() {
-      for (var f of array) {
+      for (var f of object) {
         f;
       }
     });
-    suite.add('forEach', function() {
-      array.forEach(function(value, index) {
+    suite.add('Object.keys forEach', function() {
+      Object.keys(object).forEach(function(value, index) {
         value;
       });
     });
     suite.add('lodash.forEach', function() {
-      _.forEach(array, function(value, index) {
+      _.forEach(object, function(value, index) {
+        value;
+      });
+    });
+    suite.add('async.forEach', function() {
+      async.forEach(object, function(value, index) {
+        value;
+      });
+    });
+    suite.add('async.forEachSeries', function() {
+      async.forEachSeries(object, function(value, index) {
         value;
       });
     });
