@@ -34,11 +34,6 @@ async.timesSeries(
         object[i];
       }
     });
-    suite.add('for-of', function() {
-      for (var f of object) {
-        f;
-      }
-    });
     suite.add('Object.keys forEach', function() {
       Object.keys(object).forEach(function(value, index) {
         value;
