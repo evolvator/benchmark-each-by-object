@@ -39,7 +39,7 @@ async.timesSeries(
         value;
       });
     });
-    suite.add('lodash@1.0.1 forEach', function() {
+    suite.add('lodash@4.17.10 forEach', function() {
       _.forEach(object, function(value, index) {
         value;
       });
