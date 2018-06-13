@@ -9,7 +9,7 @@ async.timesSeries(
   15,
   function(t, next) {
     var count = Math.pow(2, t);
-    var suite = new Benchmark.Suite(`${count} size`);
+    var suite = new Benchmark.Suite(`${count} object size`);
 
     var object = {};
     for (var i = 0; i < count; i++) {
