@@ -3,6 +3,7 @@ var tb = require('travis-benchmark');
 var beauty = require('beautify-benchmark');
 var _ = require('lodash');
 var async = require('async');
+var foreach = require('foreach');
 
 async.timesSeries(
   15,
@@ -39,21 +40,26 @@ async.timesSeries(
         value;
       });
     });
-    suite.add('lodash.forEach', function() {
+    suite.add('lodash@1.0.1 forEach', function() {
       _.forEach(object, function(value, index) {
         value;
       });
     });
-    suite.add('async.forEachOf', function() {
+    suite.add('async@2.6.1 forEachOf', function() {
       async.forEachOf(object, function(value, index, next) {
         value;
         next();
       });
     });
-    suite.add('async.forEachOfSeries', function() {
+    suite.add('async@2.6.1 forEachOfSeries', function() {
       async.forEachOfSeries(object, function(value, index, next) {
         value;
         next();
+      });
+    });
+    suite.add('foreach@2.0.5', function() {
+      foreach(object, function(value, index) {
+        value;
       });
     });
 
