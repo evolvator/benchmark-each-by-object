@@ -25,8 +25,8 @@ async.timesSeries(
       var array = Object.keys(object);
       var i = 0;
       while (i < count) {
-        i++;
         array[i];
+        i++;
       }
     });
     suite.add('for-in', function() {
