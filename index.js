@@ -18,14 +18,14 @@ async.timesSeries(
     suite.add('Object.keys for', function() {
       var array = Object.keys(object);
       for (var i = 0; i < count; i++) {
-        array[i];
+        object[array[i]];
       };
     });
     suite.add('Object.keys while', function() {
       var array = Object.keys(object);
       var i = 0;
       while (i < count) {
-        array[i];
+        object[array[i]];
         i++;
       }
     });
