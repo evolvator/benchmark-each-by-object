@@ -14,6 +14,12 @@ async.timesSeries(
     for (var i = 0; i < count; i++) {
       object[i] = i;
     }
+    
+    var callbackSync = function(value, index) { value; };
+    var callbackAsync = function(value, index, next) {
+      value;
+      next();
+    };
 
     suite.add('Object.keys for', function() {
       var array = Object.keys(object);
@@ -35,31 +41,19 @@ async.timesSeries(
       }
     });
     suite.add('Object.keys forEach', function() {
-      Object.keys(object).forEach(function(value, index) {
-        value;
-      });
+      Object.keys(object).forEach(callbackSync);
     });
     suite.add('lodash@4.17.10 forEach', function() {
-      _.forEach(object, function(value, index) {
-        value;
-      });
+      _.forEach(object, callbackSync);
     });
     suite.add('async@2.6.1 forEachOf', function() {
-      async.forEachOf(object, function(value, index, next) {
-        value;
-        next();
-      });
+      async.forEachOf(object, callbackAsync);
     });
     suite.add('async@2.6.1 forEachOfSeries', function() {
-      async.forEachOfSeries(object, function(value, index, next) {
-        value;
-        next();
-      });
+      async.forEachOfSeries(object, callbackAsync);
     });
     suite.add('foreach@2.0.5', function() {
-      foreach(object, function(value, index) {
-        value;
-      });
+      foreach(object, callbackSync);
     });
 
     tb.wrapSuite(suite, () => next());
