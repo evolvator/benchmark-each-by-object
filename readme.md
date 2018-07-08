@@ -2,7 +2,7 @@
 
 What's the fastest way to each by object?
 
-[![Build Status](https://travis-ci.org/evolvator/benchmark-each-by-object.svg?branch=master)](https://travis-ci.org/evolvator/benchmark-each-by-object)
+[![Build Status](https://travis-ci.org/evolvator/benchmark-each-by-object.svg?branch=code)](https://travis-ci.org/evolvator/benchmark-each-by-object)
 
 [Executable code](https://github.com/evolvator/benchmark-each-by-object/tree/code)
 
